@@ -10,6 +10,7 @@ namespace Optimize\Conf;
 
 
 use com_jjcbs\lib\Conf;
+use Optimize\Rule\ForeachNodeVisitor;
 use Optimize\Rule\ForNodeVisitor;
 
 /**
@@ -23,8 +24,9 @@ class RuleConf extends Conf
         'class' => [
 
         ],
-        'method' => [
-            ForNodeVisitor::class
+        'forOrForeach' => [
+            ForNodeVisitor::class,
+            ForeachNodeVisitor::class
         ]
     ];
 }

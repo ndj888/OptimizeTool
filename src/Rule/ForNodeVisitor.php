@@ -9,9 +9,7 @@
 namespace Optimize\Rule;
 
 
-use com_jjcbs\lib\ListBean;
 use Optimize\Bean\NoticeBean;
-use Optimize\Fun\Helper;
 use Optimize\Lib\CodeParser;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
@@ -20,7 +18,7 @@ class ForNodeVisitor extends NodeVisitorAbstract
 {
     public function leaveNode(Node $node)
     {
-        $msg = '在for中不建议使用函数';
+        $msg = '在for中不建议使用函数或方法';
         if ($node instanceof Node\Stmt\For_) {
             foreach ($node->cond as $v) {
                 if ($v->right instanceof Node\Expr\FuncCall

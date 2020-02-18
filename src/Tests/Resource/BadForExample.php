@@ -16,13 +16,15 @@ class BadForExample
         return count($arr);
     }
 
-    public function check()
+    public function badFor()
     {
         $arr = [0, 1, 2, 3, 4, 5];
         for ($i = 0; $i < $this->mCount($arr); $i++) {
             echo $i;
         }
+    }
 
+    public function badForeach(){
         foreach (explode(',', '1,2,3,4,5') as $v) {
             echo $v;
         }

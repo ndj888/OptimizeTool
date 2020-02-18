@@ -8,4 +8,7 @@
 
 //入口文件
 require '../vendor/autoload.php';
-var_dump(\com_jjcbs\fun\Main::scanDirectories(__DIR__));
+
+$app = new \Symfony\Component\Console\Application();
+$app->add(new \Optimize\Command\MainCommand());
+$app->run();

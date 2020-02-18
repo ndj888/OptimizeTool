@@ -11,10 +11,10 @@ namespace Optimize\Lib;
 
 use com_jjcbs\lib\ListBean;
 use com_jjcbs\lib\Service;
+use Optimize\Bean\BaseListBean;
 use Optimize\Bean\FileInfoBean;
 use Optimize\Bean\NoticeBean;
 use Optimize\Bean\NoticeListBean;
-use Optimize\Conf\RuleConf;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
@@ -43,6 +43,7 @@ class CodeParser extends Service
      * @var ListBean
      */
     public static $NOTICE_LIST_BEAN;
+    protected static $rules = [];
 
     public function __construct()
     {
@@ -70,10 +71,7 @@ class CodeParser extends Service
 
     protected function initVisitor()
     {
-        foreach (RuleConf::$data['method'] as $o) {
-            self::$traverser->addVisitor(new $o);
-        }
-        foreach (RuleConf::$data['class'] as $o) {
+        foreach (self::$rules as $o) {
             self::$traverser->addVisitor(new $o);
         }
     }
@@ -82,15 +80,24 @@ class CodeParser extends Service
      * push notice
      * @param NoticeBean $noticeBean
      */
-    public static function pushNoticeList(NoticeBean $noticeBean){
+    public static function pushNoticeList(NoticeBean $noticeBean)
+    {
         $fileName = self::$fileInfoBean->getFilePath();
-        if ( !isset(self::$NOTICE_LIST_BEAN[$fileName])){
+        if (!isset(self::$NOTICE_LIST_BEAN[$fileName])) {
             self::$NOTICE_LIST_BEAN[$fileName] = new NoticeListBean([
                 'fileName' => $fileName,
-                'notices' => new ListBean()
+                'notices' => new BaseListBean()
             ]);
         }
         self::$NOTICE_LIST_BEAN[$fileName]->getNotices()->append($noticeBean);
+    }
+
+    /**
+     * @param array $rules
+     */
+    public static function setRules(array $rules): void
+    {
+        self::$rules = $rules;
     }
 
 

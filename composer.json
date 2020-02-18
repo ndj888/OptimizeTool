@@ -1,0 +1,26 @@
+{
+    "name": "longbob/optimize-tool",
+    "description": "PHP projects automatically suggest optimizations",
+    "type": "project",
+    "require": {
+        "ndj888/com_jjcbs_tool": "^1.18",
+        "nikic/php-parser": "^4.3",
+        "symfony/console": "^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1",
+        "phar-io/manifest": "^1.0"
+    },
+    "license": "Apache License2.0",
+    "authors": [
+        {
+            "name": "longbob",
+            "email": "710190609@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Optimize\\" : "src/"
+        }
+    }
+}
