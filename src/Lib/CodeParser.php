@@ -43,6 +43,10 @@ class CodeParser extends Service
      * @var ListBean
      */
     public static $NOTICE_LIST_BEAN;
+    /**
+     * @var \PhpParser\PrettyPrinter\Standard
+     */
+    public static $Printer;
     protected static $rules = [];
 
     public function __construct()
@@ -51,6 +55,7 @@ class CodeParser extends Service
         self::$traverser = new NodeTraverser;
         $this->initVisitor();
         self::$NOTICE_LIST_BEAN = [];
+        self::$Printer = new \PhpParser\PrettyPrinter\Standard;
     }
 
     public function exec()

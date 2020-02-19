@@ -69,4 +69,39 @@ class Helper
         }
         return $allData;
     }
+
+    /**
+     * 获取指定代码片段
+     * @param int $start
+     * @param int $end
+     * @param array $codeArr
+     * @return string
+     */
+    public static function getCodeFragment(int $start, int $end, array &$codeArr)
+    {
+        $code = '';
+        for ($i = $start; $i < $end; $i++) {
+            $code += $codeArr[$i - 1];
+        }
+        return $code;
+    }
+
+    /**
+     * 查找是否存在sql关键字
+     * @param string $code
+     * @return bool
+     */
+    public static function hasSql(string $code) : bool
+    {
+        $sqlKeyword = [
+            'insert', 'delete', 'update', 'select', 'distinct', 'like', 'limit', 'count', 'sum', 'max', 'min', 'avg', 'order by', 'group by', 'having'
+        ];
+        foreach ($sqlKeyword as $word){
+            if ( stristr($code , $word) !== false){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

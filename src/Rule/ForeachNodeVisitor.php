@@ -10,6 +10,7 @@ namespace Optimize\Rule;
 
 
 use Optimize\Bean\NoticeBean;
+use Optimize\Fun\Helper;
 use Optimize\Lib\CodeParser;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
@@ -25,6 +26,15 @@ class ForeachNodeVisitor extends NodeVisitorAbstract
                 CodeParser::pushNoticeList(new NoticeBean([
                     'startLine' => $node->getStartLine(),
                     'msg' => '不建议在Foreach结构中使用函数或方法。'
+                ]));
+            }
+
+            // 检测sql
+            $code = CodeParser::$Printer->prettyPrint($node->stmts);
+            if ( Helper::hasSql($code)){
+                CodeParser::pushNoticeList(new NoticeBean([
+                    'startLine' => $node->getStartLine(),
+                    'msg' => '不建议在Foreach中使用sql循环查询'
                 ]));
             }
         }

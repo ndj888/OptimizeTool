@@ -14,7 +14,7 @@ use Optimize\Lib\CodeParser;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class MainCommand extends ScanCommand
+class ForOrForeachCommand extends ScanCommand
 {
     protected static $defaultName = 'scan:for';
 

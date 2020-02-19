@@ -8,8 +8,7 @@
         "symfony/console": "^5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.1",
-        "phar-io/manifest": "^1.0"
+        "phpunit/phpunit": "^8.1"
     },
     "license": "Apache License2.0",
     "authors": [
@@ -22,5 +21,8 @@
         "psr-4": {
             "Optimize\\" : "src/"
         }
-    }
+    },
+    "bin": [
+        "./main"
+    ]
 }

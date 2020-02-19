@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ec2e637ae068492699afda10ae57fcd",
+    "content-hash": "0ab93ba4e9582a98ea1ceeb92d05aa2d",
     "packages": [
         {
             "name": "ndj888/com_jjcbs_tool",
