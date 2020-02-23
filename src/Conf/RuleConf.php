@@ -12,6 +12,7 @@ namespace Optimize\Conf;
 use com_jjcbs\lib\Conf;
 use Optimize\Rule\ForeachNodeVisitor;
 use Optimize\Rule\ForNodeVisitor;
+use Optimize\Rule\MethodTooLang;
 
 /**
  * 规则配置，绑定作用域
@@ -27,6 +28,9 @@ class RuleConf extends Conf
         'forOrForeach' => [
             ForNodeVisitor::class,
             ForeachNodeVisitor::class
+        ],
+        'methodTooLang' => [
+            MethodTooLang::class
         ]
     ];
 }
